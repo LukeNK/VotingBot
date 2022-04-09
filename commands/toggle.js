@@ -3,7 +3,7 @@ const editJsonFile = require("edit-json-file");
 let file = editJsonFile("./data/data.json");
 
 module.exports = {
-    name: "Toggle",
+    name: "toggle",
     description: "Opens or closes the poll",
     index: "Admin",
     options: [],
