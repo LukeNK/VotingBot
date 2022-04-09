@@ -21,11 +21,6 @@ module.exports = {
             interaction.followUp({content: "You cannot use this command in DM!"});
             return;
         }
-
-        if(file.get("isOpen")){
-            interaction.followUp({content: "You cannot reveal the results when the poll has not been closed!"});
-            return;
-        }
         
         file.set("isOpen", !file.get("isOpen"));
         file.save();
