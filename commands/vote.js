@@ -58,7 +58,18 @@ module.exports = {
         }
 
         //enter ballot and shuffle ballot array
-        file.set("ballots", shuffle([...file.get("ballots"), interaction.options.get("ballot").value]));
+        let ballot = interaction.options.get("ballot").value.toLowerCase();
+        //check voting method
+        if (file.get('methodId') < 3) { // rankng voting systems
+            ballot = ballot.split(' ');
+        } else if (file.get('methodId') == 3) { // multiple choice
+            ballot = ballot.split(' ');
+        } else if (file.get('methodId') == 4) { // yes no
+            if (ballot == 'y' || ballot == 'yes') ballot == true;
+            else if (ballot == 'n' || ballot == 'no') ballot == false;
+            else return interaction.editReply(makeEmbed("Your ballot is invalid! Please only input \"y\" or \"n\"."));
+        } 
+        file.set("ballots", shuffle([...file.get("ballots"), ballot]));
 
         //enter user hash and suffle voter hash array
         file.set("voterHash", shuffle([...file.get("voterHash"), userHash]));

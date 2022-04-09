@@ -4,6 +4,7 @@
   "description": "",
   "footer": "",
   "method": "",
+  "methodId": 0,
   "options": [
       {
           "name": "a",
