@@ -25,6 +25,12 @@ module.exports = {
         let guild = client.guilds.cache.get(process.env.GUILD_ID);
         if(!guild) throw "Guild not found!";
 
+        //check if poll is open
+        if(!file.get("isOpen")){
+            interaction.editReply(makeEmbed("Poll has been closed, you cannot vote!"));
+            return;
+        }
+
         //check if in DM
         if(interaction.channel.type !== "DM"){
             interaction.editReply(makeEmbed("You can only vote in this bot's DM!"));
