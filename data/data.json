@@ -1,19 +1,19 @@
 {
-    "isOpen": true,
-    "title": "",
-    "description": "",
-    "footer": "",
-    "method": "",
-    "options": [
-        {
-            "name": "a",
-            "description": ""
-        }
-    ],
-    "voterHash": [
+  "isOpen": true,
+  "title": "",
+  "description": "",
+  "footer": "",
+  "method": "",
+  "options": [
+      {
+          "name": "a",
+          "description": ""
+      }
+  ],
+  "voterHash": [
 
-    ],
-    "ballots": [
-        
-    ]
+  ],
+  "ballots": [
+      
+  ]
 }

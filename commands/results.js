@@ -1,6 +1,5 @@
 const {CommandInteraction, Client, MessageEmbed, MessageAttachment} = require("discord.js");
 const editJsonFile = require("edit-json-file");
-let file = editJsonFile("./data/data.json");
 
 module.exports = {
     name: "results",
@@ -14,6 +13,7 @@ module.exports = {
     * @param {Client} client
     */
     execute(interaction, args, client){
+        let file = editJsonFile("./data/data.json");
         let guild = client.guilds.cache.get(process.env.GUILD_ID);
         if(!guild) throw "Guild not found!";
     
