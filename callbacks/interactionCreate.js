@@ -11,6 +11,9 @@ module.exports = {
      * @param {Client} client 
      */
     async execute(interaction, client) {
+        let guild = client.guilds.cache.get(process.env.GUILD_ID);
+        if(!guild) throw "Guild not found!";
+
         if (!interaction.isCommand()) return;
         await interaction.deferReply().catch(() => {});
         let cmd = client.commands.get(interaction.commandName);
@@ -25,16 +28,10 @@ module.exports = {
                 content: "This command is currently disabled."
             });
         
-        if (
-            cmd.index === "Admin" &&
-            !interaction.member?.permissions.has("ADMINISTRATOR", {
-                checkAdmin: true,
-                checkOwner: false,
-            })
-        )
-            return interaction.followUp({
-                content: "You don't have permissions."
-            });
+        if(!guild.members.cache.get(interaction.user.id)?.roles?.cache?.get(process.env.EC_ROLE_ID) && cmd.index === "Admin"){
+            interaction.followUp({content: "You do not have permission to use this command!"});
+            return;
+        } 
         
         try {
             cmd.execute(interaction, args, client);

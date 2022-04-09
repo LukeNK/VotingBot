@@ -1,10 +1,15 @@
 {
     "title": "",
-    "methodID": 0,
-    "options": {
-
-    },
-    "voters": [
+    "description": "",
+    "footer": "",
+    "method": "",
+    "options": [
+        {
+            "name": "a",
+            "description": ""
+        }
+    ],
+    "voterHash": [
 
     ],
     "ballots": [

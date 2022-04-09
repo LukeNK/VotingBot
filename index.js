@@ -8,13 +8,12 @@ client.login(process.env.TOKEN);
 
 client.commands = new Collection();
 client.callbacks = new Collection();
-client.arrayOfSlashCommands = new Collection();
+client.arrayOfSlashCommands = [];
 
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(let file of commandFiles){
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
-    client.timeout.set(command.name, new Collection());
     client.arrayOfSlashCommands.push(command);
 }
 
