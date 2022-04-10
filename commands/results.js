@@ -31,7 +31,7 @@ module.exports = {
 
         file.get("ballots").forEach(v=>ballots+=`${v}\n\n`);
 
-        ballots += `In total: ${file.get("ballots").length} ballots cast.`
+        ballots += `-------------\nIn total: ${file.get("ballots").length} ballot(s) cast.\n\n-------------\n`;
 
         let embed = new MessageEmbed()
         .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
@@ -45,6 +45,6 @@ module.exports = {
                 new MessageAttachment(Buffer.from(ballots), "ballots.txt"),
                 "./data/data.json"
             ]
-        })
+        });
     }
 }
