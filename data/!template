@@ -1,5 +1,5 @@
 {
-    "isOpen": true,
+    "isOpen": false,
     "title": "",
     "description": "",
     "footer": "",
@@ -24,7 +24,7 @@
 EXAMPLE:
 
 {
-  "isOpen": true,
+  "isOpen": false,
   "title": "Who should be the next Head of State?",
   "description": "Cast your ballot using /vote. Rank the options from most prefered to least prefered from left to right, spliting with a space (\" \"). \n*Example:* ```\n/vote a b c d\n```",
   "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",

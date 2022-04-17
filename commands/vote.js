@@ -1,6 +1,7 @@
 const {CommandInteraction, Client, MessageEmbed} = require("discord.js");
 const crypto = require("crypto");
 const editJsonFile = require("edit-json-file");
+const fs = require("fs");
 
 module.exports = {
     name: "vote",
@@ -36,6 +37,9 @@ module.exports = {
             interaction.editReply(makeEmbed("You can only vote in this bot's DM!"));
             return;
         }
+
+        //get seed
+        const seed = fs.readFileSync("./data/seed.txt", {encoding: "utf-8"});
     
         //check if citizen
         if(!guild.members.cache.get(interaction.user.id)?.roles?.cache?.get(process.env.CITIZEN_ROLE_ID)){
@@ -47,7 +51,7 @@ module.exports = {
         //create user's hash
         let userHash = crypto
         .createHash("sha512")
-        .update(interaction.user.id)
+        .update(interaction.user.id + seed)
         .digest("base64");
 
         //check if user has voted (compare user's has to file)
