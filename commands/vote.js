@@ -69,8 +69,8 @@ module.exports = {
         } else if (file.get('methodId') == 3) { // multiple choice
             ballot = ballot.split(' ');
         } else if (file.get('methodId') == 4) { // yes no
-            if (ballot == 'y' || ballot == 'yes') ballot == true;
-            else if (ballot == 'n' || ballot == 'no') ballot == false;
+            if (ballot == 'y' || ballot == 'yes') ballot = true;
+            else if (ballot == 'n' || ballot == 'no') ballot = false;
             else return interaction.editReply(makeEmbed("Your ballot is invalid! Please only input \"y\" or \"n\"."));
         } 
         file.set("ballots", shuffle([...file.get("ballots"), ballot]));
