@@ -1,5 +1,6 @@
 const {CommandInteraction, Client, MessageEmbed, MessageAttachment} = require("discord.js");
 const editJsonFile = require("edit-json-file");
+const fs = require("fs");
 
 module.exports = {
     name: "toggle",
@@ -20,6 +21,23 @@ module.exports = {
         if(interaction.channel.type === "DM"){
             interaction.followUp({content: "You cannot use this command in DM!"});
             return;
+        }
+
+        //seed
+        if(!file.get("isOpen")){
+            const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            let seed = "";
+
+            for(let x = 0; x < 32; x++){
+                seed += characters[Math.floor(Math.random() * characters.length)];
+            }
+
+            fs.writeFileSync("./data/seed.txt", seed, {encoding: "utf-8"});
+            console.log("New seed generated.");
+        }
+        else{
+            fs.writeFileSync("./data/seed.txt", "");
+            console.log("Seed erased.");
         }
         
         file.set("isOpen", !file.get("isOpen"));

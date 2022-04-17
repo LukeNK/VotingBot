@@ -13,6 +13,10 @@ client.arrayOfSlashCommands = [];
 const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'));
 for(let file of commandFiles){
     const command = require(`./commands/${file}`);
+    if(parseInt(process.env.TEMP_TEST)){
+        command.description = `[EXPERIMENTAL] ${command.description}`;
+        command.options.find(v => v.type === "SUB_COMMAND_GROUP")?.options.forEach(v => v.description = `[EXPERIMENTAL] ${v.description}`);
+    };
     client.commands.set(command.name, command);
     client.arrayOfSlashCommands.push(command);
 }
