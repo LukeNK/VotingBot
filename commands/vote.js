@@ -38,9 +38,22 @@ module.exports = {
             return;
         }
 
-        //get seed
+        //get seed + publicHash
         const seed = fs.readFileSync("./data/seed.txt", {encoding: "utf-8"});
+        const publicHash = fs.readFileSync("./data/publicHash.txt", {encoding: "utf-8"});
     
+        //check if the seed is tampered
+        let seedHash = crypto
+        .createHash("sha512")
+        .update(seed)
+        .digest("base64");
+        if (seedHash != publicHash) {
+            interaction.editReply(makeEmbed("The seed was tampered! Please report to Election Commission."))
+            console.error('The seed was tampered! Vote closed.');
+            file.set('isOpen', false); // close vote
+            return;
+        }
+
         //check if citizen
         if(!guild.members.cache.get(interaction.user.id)?.roles?.cache?.get(process.env.CITIZEN_ROLE_ID)){
             interaction.editReply(makeEmbed("You are not a citizen of the Bayer Free State, therefore you are not allowed to vote!"));
@@ -64,7 +77,7 @@ module.exports = {
         //enter ballot and shuffle ballot array
         let ballot = interaction.options.get("ballot").value.toLowerCase();
         //check voting method
-        if (file.get('methodId') < 3) { // rankng voting systems
+        if (file.get('methodId') < 3) { // ranking voting systems
             ballot = ballot.split(' ');
         } else if (file.get('methodId') == 3) { // multiple choice
             ballot = ballot.split(' ');

@@ -33,6 +33,24 @@ module.exports = {
 
         ballots += `-------------\nIn total: ${file.get("ballots").length} ballot(s) cast.\n\n-------------\n`;
 
+        // Count ballots
+        if (file.get('methodId') = 1) { // Single transferable vote
+            let inData = {
+                seatsToFill: file.get('setings').seatsToFill,
+                candidates: [],
+                votes: [],
+                report: console.log
+            }
+            let options = file.get('options');
+            for (const candidate of options) inData.candidates.push(candidate.name);
+            file.get('ballots').forEach(ballot => {
+                inData.votes.push({
+                    weight: 1,
+                    preferences: ballot
+                })
+            });
+        } 
+
         let embed = new MessageEmbed()
         .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
         .setTitle(file.get("title"))
