@@ -1,5 +1,6 @@
 const {CommandInteraction, Client, MessageEmbed, MessageAttachment} = require("discord.js");
 const editJsonFile = require("edit-json-file");
+const crypto = require("crypto")
 const fs = require("fs");
 
 module.exports = {
@@ -32,17 +33,26 @@ module.exports = {
                 seed += characters[Math.floor(Math.random() * characters.length)];
             }
 
+            let publicHash = crypto
+            .createHash("sha512")
+            .update(seed)
+            .digest("base64");
+            
             fs.writeFileSync("./data/seed.txt", seed, {encoding: "utf-8"});
+            fs.writeFileSync("./data/publicHash.txt", publicHash, {encoding: "utf-8"});
+
             console.log("New seed generated.");
+            console.log('Seed hash: ' + publicHash);
+            console.time('Voting period');
         }
         else{
-            fs.writeFileSync("./data/seed.txt", "");
+            fs.rmSync('./data/seed.txt');
             console.log("Seed erased.");
+            console.timeEnd('Voting period');
         }
         
         file.set("isOpen", !file.get("isOpen"));
         file.save();
-        console.log('Voting: ' + file.get("isOpen"));
 
         let embed = new MessageEmbed()
         .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
