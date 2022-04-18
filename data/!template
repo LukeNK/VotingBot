@@ -4,7 +4,8 @@
     "description": "",
     "footer": "",
     "method": "",
-    "methodId": 0,
+    "methodId": 0, //0: IRV, 1: STV, 2: multiple-choices, 3: majority, 4: yes-no
+    "setings": {}, //voting system specific setings. STV: seats.
     "options": [
         {
             "name": "a",
@@ -29,7 +30,8 @@ EXAMPLE:
   "description": "Cast your ballot using /vote. Rank the options from most prefered to least prefered from left to right, spliting with a space (\" \"). \n*Example:* ```\n/vote a b c d\n```",
   "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",
   "method": "Instant Runoff Voting",
-  "methodId": 0, //0: IRV, 1: STV, 2: multiple-choices, 3: majority, 4: yes-no
+  "methodId": 0, 
+  "setings": {},
   "options": [
     {
         "name": "a",

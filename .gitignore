@@ -114,3 +114,6 @@ Thumbs.db
 
 # Old commands
 commands_old/
+
+# Custom ignore
+./data/seed.txt
