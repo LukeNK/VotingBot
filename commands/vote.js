@@ -48,7 +48,7 @@ module.exports = {
         .update(seed)
         .digest("base64");
         if (seedHash != publicHash) {
-            interaction.editReply(makeEmbed("The seed was tampered! Please report to Election Commission."))
+            interaction.editReply(makeEmbed("The seed was tampered! Please report to the Election Commission."))
             console.error('The seed was tampered! Vote closed.');
             file.set('isOpen', false); // close vote
             return;
