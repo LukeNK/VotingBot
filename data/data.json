@@ -1,23 +1,23 @@
 {
   "isOpen": false,
-  "title": "",
-  "description": "",
-  "footer": "",
-  "method": "",
-  "methodId": 0,
-  "setings": {
-
-  },
+  "title": "Should callmepeterz be the next Head of State?",
+  "description": "Cast your ballot using /vote. Vote with \"yes\" **OR** \"no\". \n*Example:* ```\n/vote yes\n```",
+  "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",
+  "method": "Yes-No voting",
+  "methodId": 4,
+  "setings": {},
   "options": [
-      {
-          "name": "a",
-          "description": ""
-      }
+    {
+      "name": "yes",
+      "description": "I agree that Peter should be the next Head of State"
+    },
+    {
+      "name": "no",
+      "description": "I DO NOT agree that Peter should be the next Head of State"
+    }
   ],
   "voterHash": [
-
   ],
   "ballots": [
-      
   ]
 }
