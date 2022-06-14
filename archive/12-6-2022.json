@@ -1,0 +1,37 @@
+{
+  "isOpen": false,
+  "title": "Should callmepeterz be the next Head of State?",
+  "description": "Cast your ballot using /vote. Vote with \"yes\" **OR** \"no\". \n*Example:* ```\n/vote yes\n```",
+  "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",
+  "method": "Yes-No voting",
+  "methodId": 4,
+  "setings": {},
+  "options": [
+    {
+      "name": "yes",
+      "description": "I agree that Peter should be the next Head of State"
+    },
+    {
+      "name": "no",
+      "description": "I DO NOT agree that Peter should be the next Head of State"
+    }
+  ],
+  "voterHash": [
+    "rHf15NaFdQQ3a0f+1s+41LW7evtBXnc8g8oMQL7gRGWkN+SYfzYnEGspo/DCWAqtjbJ8m0cGYA7RUUmQBUDRSA==",
+    "RchWahcLvDQxtbZOYn227m3JKMDHv+Y/GdiYbiNCYJGI5Es2LBpbOR0nsGgPQ3ZZ7WQQi3Y0hTb4F3p43haYTg==",
+    "UpS8DrbLTMGks2lgAG2kJ4bGehUdvfsvaUw8Z2rswVe+JKrZro0HnUhO+twUSoGQxuPANdT0ej8q7xtJqOEDyQ==",
+    "eVzsoTcyy5hf6lX9r+K3bd7o3H6XcB1vpoASFIDrHr9wibW4lDUy5c7RC4pjONZdK0lmv2ch/kAPP4HwkfapkA==",
+    "y9iBr7UcxbVkDhf1ZixKSNr4+g34wWeZ/RxWezviSf+875qEOFbWX8Y4dmieIlqtA+5zE1QZ8qFmTMtRoLzNgQ==",
+    "x+AWYt+ojqLjmvY0p4q2Tp8G7CHKniaO0qQc7MsfWR9SLhgtgyPJWnhLTQNSQKknAdQQkb/YaBbdj3xibtzacA==",
+    "e0nLywzh3G7iyI64X57GKGVD5YG9L+xfTHYEnI4Izv0H0NvwDMhatCSKaIwillTLLuQuBIXnbR5LCbnT3GBFSg=="
+  ],
+  "ballots": [
+    false,
+    false,
+    true,
+    true,
+    true,
+    true,
+    true
+  ]
+}
