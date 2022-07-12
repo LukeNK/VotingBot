@@ -8,7 +8,7 @@ module.exports = {
     description: "Opens or closes the poll",
     index: "Admin",
     options: [],
-    
+
     /**
      * @param {CommandInteraction} interaction
      * @param {Array<String>} args
@@ -18,7 +18,7 @@ module.exports = {
         let file = editJsonFile("./data/data.json");
         let guild = client.guilds.cache.get(process.env.GUILD_ID);
         if(!guild) throw "Guild not found!";
-    
+
         if(interaction.channel.type === "DM"){
             interaction.followUp({content: "You cannot use this command in DM!"});
             return;
@@ -37,20 +37,20 @@ module.exports = {
             .createHash("sha512")
             .update(seed)
             .digest("base64");
-            
-            fs.writeFileSync("./data/seed.txt", seed, {encoding: "utf-8"});
-            fs.writeFileSync("./data/publicHash.txt", publicHash, {encoding: "utf-8"});
+
+            fs.writeFileSync("./data/seed.seed", seed, {encoding: "utf-8"});
+            fs.writeFileSync("./data/publicHash.seed", publicHash, {encoding: "utf-8"});
 
             console.log("New seed generated.");
             console.log('Seed hash: ' + publicHash);
             console.time('Voting period');
         }
         else{
-            fs.rmSync('./data/seed.txt');
+            fs.rmSync('./data/seed.seed');
             console.log("Seed erased.");
             console.timeEnd('Voting period');
         }
-        
+
         file.set("isOpen", !file.get("isOpen"));
         file.save();
 
@@ -59,7 +59,7 @@ module.exports = {
         .setTitle(file.get("title"))
         .setAuthor({name: file.get("method")})
         .setDescription(`Poll is now ${file.get("isOpen") ? "open": "closed"}.`);
-        
+
         interaction.editReply({
             embeds: [embed]
         });

@@ -4,7 +4,9 @@
   "description": "Voting instrument of the Bayer Free State",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "startRemote": "node index.js > index.log & wssh"
   },
   "keywords": [],
   "author": "The Bayer Free State",

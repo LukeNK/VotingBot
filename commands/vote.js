@@ -39,9 +39,9 @@ module.exports = {
         }
 
         //get seed + publicHash
-        const seed = fs.readFileSync("./data/seed.txt", {encoding: "utf-8"});
-        const publicHash = fs.readFileSync("./data/publicHash.txt", {encoding: "utf-8"});
-    
+        const seed = fs.readFileSync("./data/seed.seed", {encoding: "utf-8"});
+        const publicHash = fs.readFileSync("./data/publicHash.seed", {encoding: "utf-8"});
+
         //check if the seed is tampered
         let seedHash = crypto
         .createHash("sha512")
@@ -59,7 +59,7 @@ module.exports = {
             interaction.editReply(makeEmbed("You are not a citizen of the Bayer Free State, therefore you are not allowed to vote!"));
             console.log(`User <@!${interaction.user.id}> attempted to vote while not being a citizen.`);
             return;
-        } 
+        }
 
         //create user's hash
         let userHash = crypto
@@ -85,7 +85,7 @@ module.exports = {
             if (ballot == 'y' || ballot == 'yes') ballot = true;
             else if (ballot == 'n' || ballot == 'no') ballot = false;
             else return interaction.editReply(makeEmbed("Your ballot is invalid! Please only input \"y\" or \"n\"."));
-        } 
+        }
         file.set("ballots", shuffle([...file.get("ballots"), ballot]));
 
         //enter user hash and suffle voter hash array

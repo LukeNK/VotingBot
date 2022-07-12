@@ -14,5 +14,5 @@ if (data.method == 2) {
         else if (ballot === false) falseC++;
         else console.log('Faulty ballot');
     }
-    console.log(`True: ${trueC}\nFalse: ${falseC}`)
+    console.log(`True: ${trueC}\nFalse: ${falseC}`);
 }

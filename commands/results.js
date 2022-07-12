@@ -16,7 +16,7 @@ module.exports = {
         let file = editJsonFile("./data/data.json");
         let guild = client.guilds.cache.get(process.env.GUILD_ID);
         if(!guild) throw "Guild not found!";
-    
+
         if(interaction.channel.type === "DM"){
             interaction.followUp({content: "You cannot use this command in DM!"});
             return;
@@ -34,7 +34,7 @@ module.exports = {
         ballots += `-------------\nIn total: ${file.get("ballots").length} ballot(s) cast.\n\n-------------\n`;
 
         // Count ballots
-        if (file.get('methodId') = 1) { // Single transferable vote
+        if (file.get('methodId') == 1) { // Single transferable vote
             let inData = {
                 seatsToFill: file.get('setings').seatsToFill,
                 candidates: [],
@@ -49,14 +49,14 @@ module.exports = {
                     preferences: ballot
                 })
             });
-        } 
+        }
 
         let embed = new MessageEmbed()
         .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
         .setTitle(file.get("title"))
         .setAuthor({name: file.get("method")})
         .setDescription("A text file containing all ballots and a JSON file containing the raw data.")
-        
+
         interaction.editReply({
             embeds: [embed],
             files: [
