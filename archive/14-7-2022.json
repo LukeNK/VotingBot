@@ -1,0 +1,70 @@
+{
+  "isOpen": false,
+  "title": "First Fidelissma Council Election",
+  "description": "Cast your ballot using /vote. Rank the options from most prefered to least prefered from left to right, spliting with a space (\" \"). \n*Example:* ```\n/vote a b c d\n```",
+  "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",
+  "method": "Single Transferable Voting",
+  "methodId": 1,
+  "setings": {},
+  "options": [
+    {
+      "name": "K",
+      "description": "Oofie"
+    },
+    {
+      "name": "G",
+      "description": "Jaerri"
+    },
+    {
+      "name": "H",
+      "description": "Thesleanda"
+    },
+    {
+      "name": "W",
+      "description": "Luke"
+    }
+  ],
+  "voterHash": [
+    "sTLC1VzdemKriJ7x7lNEUA/XCSvFOlsmoendBTJR52S0mZs+d2Hw1xiYKiunjv5eJCnDxpFbZdJgzN8pCp4HWg==",
+    "n92oNm5qx42gHLvG7DMerJwWbaxe/UB3xiqz694MVbvpfEx3eUQwwbmt5nf9UDgrNzaW81r8RinMJy20Ks+H6Q==",
+    "6uaYy/S7IciJVt245/pqIsMaXLFkYaMTUPlv7GlOMadOWdexYD3e+El3jqfmVLz55N+ygVgcipcdOguZ1Otu+w==",
+    "nlzAsaswnMvzbWch9Ny2n/9OeptETZG6RVjFD+qcpHFMB1MyNf+6zd0GzuNUfrDfInhRlOvl4V8tF3wA+Uc7eQ==",
+    "lLL1BGx2ArBUz3q2npnDl1BOAnkxqrhJlIeSz50+ejP31lZ4+lfjQFVwZnkQ2bgZ8Uxo7wBGxwNHa/cMd2f/WQ==",
+    "bqgV7/4+9hQLz/L5zBzF9wd1Y8oYbV5PmyrZ8Ts5XKk5F+uFcFP+C08No3fGxc6FNTDfYddW4swCFX3u1lM85A=="
+  ],
+  "ballots": [
+    [
+      "h",
+      "w",
+      "g",
+      "k"
+    ],
+    [
+      "g",
+      "h",
+      "w",
+      "k"
+    ],
+    [
+      "w",
+      "g",
+      "k",
+      "h"
+    ],
+    [
+      "g",
+      "h",
+      "k",
+      "w"
+    ],
+    [
+      "g"
+    ],
+    [
+      "k",
+      "g",
+      "h",
+      "w"
+    ]
+  ]
+}
