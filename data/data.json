@@ -1,27 +1,18 @@
 {
   "isOpen": false,
-  "title": "First Fidelissma Council Election",
-  "description": "Cast your ballot using /vote. Rank the options from most prefered to least prefered from left to right, spliting with a space (\" \"). \n*Example:* ```\n/vote a b c d\n```",
-  "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",
-  "method": "Single Transferable Voting",
-  "methodId": 1,
-  "setings": {},
+  "title": "Amend the Second Ammendment to the Constitution",
+  "description": "https://docs.google.com/document/d/1thCBaeTjWsRgWD9o8CA36t67xSaHQf4sIo83X_kxP14/edit",
+  "footer": "Please vote \"y\" for yes or \"n\" for no.",
+  "method": "Two-thirds majority",
+  "methodId": 4,
   "options": [
     {
-      "name": "K",
-      "description": "Oofie"
+      "name": "Yes",
+      "description": "I agree the Second Amendment should be amended to the Constitution"
     },
     {
-      "name": "G",
-      "description": "Jaerri"
-    },
-    {
-      "name": "H",
-      "description": "Thesleanda"
-    },
-    {
-      "name": "W",
-      "description": "Luke"
+      "name": "No",
+      "description": "I DO NOT agree the Second Amendment should be amended to the Constitution"
     }
   ],
   "voterHash": [
