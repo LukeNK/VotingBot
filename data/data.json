@@ -1,7 +1,8 @@
 {
   "isOpen": false,
   "title": "The Second Head of State Election — tiebreaker",
-  "description": "Cast your ballot using /vote. Choose only one option for the ballot, input using the character represent for that candidate. \n*Example:* ```\n/vote a\n```\nhttps://cdn.discordapp.com/attachments/739002052809719909/1113990098934059008/image.png",
+  "description": "Cast your ballot using /vote. Choose only one option for the ballot, input using the character represent for that candidate. \n*Example:* ```\n/vote a\n```",
+  "image": "https://cdn.discordapp.com/attachments/739002052809719909/1113990098934059008/image.png",
   "footer": "YOU DO NOT HAVE TO REVEAL YOUR BALLOT TO ANYBODY, INCLUDING GOVERNMENTAL OFFICERS!",
   "method": "Two-thirds majority",
   "methodId": 3,
