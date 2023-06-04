@@ -27,7 +27,7 @@ module.exports = {
         .addField("\u200b", "**OPTIONS**")
 
         let options = file.get("options");
-        options.forEach(v => embed.addField(`${v.name?.toUpperCase()} \`/vote ${v.name?.toUpperCase()}`, v.description));
+        options.forEach(v => embed.addField(`${v.name?.toUpperCase()}`, v.description));
 
         interaction.editReply({embeds: [embed]});
     }

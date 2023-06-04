@@ -75,12 +75,23 @@ module.exports = {
         }
 
         //enter ballot and shuffle ballot array
-        let ballot = interaction.options.get("ballot").value.toLowerCase().split(' ');
+        let ballot = interaction.options.get("ballot").value
+            .toLowerCase()
+            .trim()
+            .split(' ');
+        let options = [];
+        for (const option of file.get('options')) options.push(option.name);
         for (const option of ballot)
-            if (!ballot.includes(option))
+            if (!options.includes(option))
                 return interaction.editReply(makeEmbed("Your ballot is invalid! Please only input the allowed options."));
-        // single-choice check
-        if (file.get('methodId') == 3 && ballot.length != 1) 
+        if (file.get('methodId') <= 2) { // ranked system
+            let lookUp = [];
+            for (const option of ballot) {
+                if (lookUp.includes(option)) 
+                    return interaction.editReply(makeEmbed("Your ballot is invalid! Please only rank the candidates once."));
+                lookUp.push(option)
+            }
+        } else if (file.get('methodId') == 3 && ballot.length != 1) // single choice
             return interaction.editReply(makeEmbed("Your ballot is invalid! Please only choose one (1) option."));
         file.set("ballots", shuffle([...file.get("ballots"), ballot]));
 
