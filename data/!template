@@ -4,7 +4,7 @@
     "description": "",
     "footer": "",
     "method": "",
-    "methodId": 0, //0: IRV, 1: STV, 2: multiple-choices, 3: majority, 4: yes-no
+    "methodId": 0, //0: IRV, 1: STV, 2: multiple-choices, 3: single-choise
     "setings": {}, //voting system specific setings. STV: seats.
     "options": [
         {
