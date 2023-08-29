@@ -1,33 +1,29 @@
-const {
-    Client
-} = require("discord.js");
-let pkg = require('../package.json');
-const editJsonFile = require("edit-json-file");
+import { Client } from "discord.js";
+import editJsonFile from "edit-json-file";
 
-module.exports = {
-    name: "ready",
-    /**
-     * @param {Client} client 
-     */
-    execute(client) {
-        let file = editJsonFile("./data/data.json");
-        console.log(`${pkg.name} (${pkg.license}) made by ${pkg.author}\nCurrent version: ${pkg.version}\n${!parseInt(process.env.TEMP_TEST)? 'Normal working condition': 'Temporary testing condition'}`);
-        
-        client.user.setPresence({
-            status: "online",
-            activities: [{
-                name: file.get('title'),
-                type: "PLAYING"
-            }]
-        });
+export const name = "ready";
 
-        if(parseInt(process.env.TEMP_TEST)){
-            client.guilds.cache.get(process.env.GUILD_ID).commands.set(client.arrayOfSlashCommands);
-        }
-        else {
-            client.guilds.cache.get(process.env.GUILD_ID).commands.set([]);
-            client.application.commands.set(client.arrayOfSlashCommands);
-        }
-        
+/**
+* @param {Client} client
+*/
+export function execute(client) {
+    let file = editJsonFile("./data/data.json");
+    console.log(`${process.env.npm_package_name} (${process.env.npm_package_license}) made by ${process.env.npm_package_author}\nCurrent version: ${process.env.npm_package_version}\n${!parseInt(process.env.TEMP_TEST) ? 'Normal working condition' : 'Experimental testing condition'}`);
+
+    client.user.setPresence({
+        status: "online",
+        activities: [{
+            name: file.get('title'),
+            type: "PLAYING"
+        }]
+    });
+
+    if (parseInt(process.env.TEMP_TEST)) {
+        client.guilds.cache.get(process.env.GUILD_ID).commands.set(client.slashCommands);
     }
+    else {
+        client.guilds.cache.get(process.env.GUILD_ID).commands.set([]);
+        client.application.commands.set(client.slashCommands);
+    }
+
 }

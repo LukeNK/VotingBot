@@ -1,28 +1,21 @@
-const {CommandInteraction, Client, MessageEmbed} = require("discord.js");
-const editJsonFile = require("edit-json-file");
+import { Client, SlashCommandBuilder, CommandInteraction } from "discord.js";
+import editJsonFile from "edit-json-file";
 let file = editJsonFile("./data/data.json");
 
-module.exports = {
-    name: "",
-    description: "",
-    index: "",
-    options: [
-        {
-            name: "",
-            description: "",
-            type: "",
-            required: false
-        }
-    ],
+export const data = new SlashCommandBuilder()
+.setName('vote')
+.setDescription("Casts a vote.")
+//.addUserOption(option => option 
+//
+//)
+export const index = ""; // "Admin", "Disabled" 
 
-    /**
-    * @param {CommandInteraction} interaction
-    * @param {Array<String>} args
-    * @param {Client} client
-    */
-    execute(interaction, args, client){
-        let guild = client.guilds.cache.get(process.env.GUILD_ID);
-        if(!guild) throw "Guild not found!";
-    
-    }
+/**
+* @param {CommandInteraction} interaction
+* @param {Client} client
+*/
+export function execute(interaction, args, client) {
+    let guild = client.guilds.cache.get(process.env.GUILD_ID);
+    if (!guild) throw "Guild not found!";
+
 }

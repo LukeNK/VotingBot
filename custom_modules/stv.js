@@ -227,7 +227,6 @@ class Ballot {
 }
 
 // read data
-const fs = require('fs');
-const data = require('../data/data.json');
+const data = import('../data/data.json');
 let ballots = data.ballots;
 runStv(ballots, data.setings.seats)
