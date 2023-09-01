@@ -5,27 +5,30 @@ let file = editJsonFile("./data/data.json");
 export const data = new SlashCommandBuilder()
 .setName('poll')
 .setDescription("Shows the poll.")
-export const index = "Vote";
 
 /**
 * @param {CommandInteraction} interaction
 * @param {Client} client
 */
-export function execute(interaction, args, client) {
+export async function execute(interaction, client) {
     let guild = client.guilds.cache.get(process.env.GUILD_ID);
-    if (!guild) throw "Guild not found!";
+    if (!guild) throw new Error("Guild not found!");
+
+    let options = file.get("options").map(v => {
+        v.name = v.name.toUpperCase();
+        v.value = v.description;
+        v.description = null;
+        return v;
+    });
 
     let embed = new EmbedBuilder()
-        .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
+        .setColor(guild.members.me.displayHexColor || process.env.DEFAULT_COLOR)
         .setTitle(file.get("title"))
         .setDescription(file.get("description"))
         .setImage(file.get("image"))
         .setAuthor({ name: file.get("method") })
         .setFooter({ text: file.get("footer") })
-        .addFields({ name: "\u200b", value: "**OPTIONS**" });
-
-    let options = file.get("options");
-    options.forEach(v => embed.addField(`${v.name?.toUpperCase()}`, v.description));
+        .addFields({ name: "\u200b", value: "**OPTIONS**" }, ...options)
 
     interaction.editReply({ embeds: [embed] });
 }

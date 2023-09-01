@@ -1,4 +1,4 @@
-import { Client, SlashCommandBuilder, CommandInteraction, EmbedBuilder }  from "discord.js";
+import { Client, SlashCommandBuilder, CommandInteraction, EmbedBuilder, ChannelType, RoleFlagsBitField, RoleFlags }  from "discord.js";
 import { createHash } from "node:crypto";
 import editJsonFile from "edit-json-file";
 import { readFileSync } from "node:fs";
@@ -9,8 +9,7 @@ export const data = new SlashCommandBuilder()
 .setDescription("Casts a vote.")
 .addUserOption(option => option
     .setName("ballot")
-    .setDescription("Your ballot. Check /poll for instruction. NOBODY CAN FORCE YOU TO SHOW BALLOT, INCLUDING OFFICIALS!"));
-export const index = "Vote";
+    .setDescription("Your ballot. Check /poll for instruction. NOBODY CAN FORCE YOU TO SHOW BALLOT, INCLUDING OFFICIALS!"))
 
 /**
 * @param {CommandInteraction} interaction
@@ -18,7 +17,7 @@ export const index = "Vote";
 */
 export async function execute(interaction, client) {
     let guild = client.guilds.cache.get(process.env.GUILD_ID);
-    if (!guild) throw "Guild not found!";
+    if (!guild) throw new Error("Guild not found!");
 
     //check if poll is open
     if (!file.get("isOpen")) {
@@ -27,7 +26,7 @@ export async function execute(interaction, client) {
     }
 
     //check if in DM
-    if (interaction.channel.type !== "DM") {
+    if (interaction.channel.type !== ChannelType.DM) {
         interaction.editReply(makeEmbed("You can only vote in this bot's DM!"));
         return;
     }

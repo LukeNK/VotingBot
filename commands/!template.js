@@ -1,6 +1,6 @@
 import { Client, SlashCommandBuilder, CommandInteraction } from "discord.js";
-import editJsonFile from "edit-json-file";
-let file = editJsonFile("./data/data.json");
+import editJsonFile from 'edit-json-file';
+let file = editJsonFile("../data/data.json");
 
 export const data = new SlashCommandBuilder()
 .setName('vote')
@@ -8,13 +8,13 @@ export const data = new SlashCommandBuilder()
 //.addUserOption(option => option 
 //
 //)
-export const index = ""; // "Admin", "Disabled" 
+//export const admin = false;
 
 /**
 * @param {CommandInteraction} interaction
 * @param {Client} client
 */
-export function execute(interaction, args, client) {
+export async function execute(interaction, args, client) {
     let guild = client.guilds.cache.get(process.env.GUILD_ID);
     if (!guild) throw "Guild not found!";
 

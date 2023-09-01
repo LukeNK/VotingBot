@@ -5,20 +5,15 @@ let file = editJsonFile("./data/data.json");
 export const data = new SlashCommandBuilder()
 .setName('results')
 .setDescription("Sends ballots and the data file.")
-export const index = "Admin";
+export const admin = true;
 
 /**
 * @param {CommandInteraction} interaction
 * @param {Client} client
 */
-export function execute(interaction, client) {
+export async function execute(interaction, client) {
     let guild = client.guilds.cache.get(process.env.GUILD_ID);
-    if (!guild) throw "Guild not found!";
-
-    if (interaction.channel.type === "DM") {
-        interaction.followUp({ content: "You cannot use this command in DM!" });
-        return;
-    }
+    if (!guild) throw new Error("Guild not found!");
 
     if (file.get("isOpen")) {
         interaction.followUp({ content: "You cannot reveal the results when the poll has not been closed!" });
@@ -50,7 +45,7 @@ export function execute(interaction, client) {
     }
 
     let embed = new EmbedBuilder()
-        .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
+        .setColor(guild.members.me.displayHexColor || process.env.DEFAULT_COLOR)
         .setTitle(file.get("title"))
         .setAuthor({ name: file.get("method") })
         .setDescription("A text file containing all ballots and a JSON file containing the raw data.");

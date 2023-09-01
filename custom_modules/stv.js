@@ -227,6 +227,7 @@ class Ballot {
 }
 
 // read data
-const data = import('../data/data.json');
-let ballots = data.ballots;
-runStv(ballots, data.setings.seats)
+import('../data/data.json').then(data => {
+    let ballots = data.ballots;
+    runStv(ballots, data.setings.seats)
+});

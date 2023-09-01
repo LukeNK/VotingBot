@@ -7,21 +7,16 @@ let file = editJsonFile("./data/data.json");
 export const data = new SlashCommandBuilder()
 .setName('toggle')
 .setDescription("Opens or closes the poll")
-export const index = "Admin";
+export const admin = true;
 
 /**
 * @param {CommandInteraction} interaction
 * @param {Client} client
 */
-export function execute(interaction, args, client) {
+export async function execute(interaction, client) {
     let guild = client.guilds.cache.get(process.env.GUILD_ID);
-    if (!guild) throw "Guild not found!";
-
-    if (interaction.channel.type === "DM") {
-        interaction.followUp({ content: "You cannot use this command in DM!" });
-        return;
-    }
-
+    if (!guild) throw new Error("Guild not found!");
+    
     //seed
     if (!file.get("isOpen")) {
         const characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
@@ -52,7 +47,7 @@ export function execute(interaction, args, client) {
     file.save();
 
     let embed = new EmbedBuilder()
-        .setColor(guild.me.displayHexColor || process.env.DEFAULT_COLOR)
+        .setColor(guild.members.me.displayHexColor || process.env.DEFAULT_COLOR)
         .setTitle(file.get("title"))
         .setAuthor({ name: file.get("method") })
         .setDescription(`Poll is now ${file.get("isOpen") ? "open" : "closed"}.`);
