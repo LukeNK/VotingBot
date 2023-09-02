@@ -15,6 +15,11 @@ export async function execute(interaction, client) {
     let cmd = client.commands.get(interaction.commandName);
     if (!cmd) throw new Error(`No command file ${interaction.commandName} found.`);
 
+    // todo:
+    // handle disabling and admin perm
+    // fix commands
+    // add buttons
+
     if (cmd.index === "Disabled")
         return sendInfo("This command is currently disabled.");
     if (cmd.admin === true && !(await guild.members.fetch(interaction.user.id)).roles.resolve(process.env.EC_ROLE_ID)) {
@@ -24,7 +29,6 @@ export async function execute(interaction, client) {
     // no use reply after this
     await interaction.deferReply();
     
-    // execute async & callback catch
     //catch all here because unhandled rejections crash everything now
     cmd.execute(interaction, client).catch(sendError);
 
